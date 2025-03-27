@@ -1,12 +1,29 @@
-# React + Vite
+# Plugin Dropdown React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce composant est un menu déroulant.
+Il permet aux utilisateurs de sélectionner une option parmi une liste
 
-Currently, two official plugins are available:
+### Installation ###
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Récupérer le composant
 
-## Expanding the ESLint configuration
+Téléchargez ou clonez ce dépôt, puis placez les fichiers "Dropdown.jsx et  Dropdown.css" dans votre projet React dans le dossier des components.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. Importer le composant dans votre projet
+
+Dans le fichier où vous voulez l'utilsier :
+
+import Dropdown from "chemin de l'emplacment du fichier.jsx"
+import "chemin de l'emplacement du fichier.css"
+
+### Utilisation ###
+
+Le composant prend en parametre une lsite d'options à afficher sous la forme d'un tableau.
+
+const State = [
+  { label: "New York", value: "new-york" },
+  { label: "Los Angeles", value: "los-angeles" },
+  { label: "Chicago", value: "chicago" }
+]
+
+<Dropdown options={options} onChange={(val) => console.log(val)} />
