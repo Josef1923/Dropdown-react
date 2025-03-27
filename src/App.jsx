@@ -1,10 +1,10 @@
+import Dropdown from "./Dropdown";
+
 function App() {
 
   return (
-    <>
-      DROPDOWN BASE
-    </>
+      <Dropdown />    
   )
 }
 
-export default App
+export default App;
