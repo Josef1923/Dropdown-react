@@ -12,3 +12,4 @@ dist
 demo
 .env
 .DS_Store
+asset/

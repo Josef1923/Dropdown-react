@@ -47,3 +47,12 @@
   .jsDropdownList li:hover {
     background: #93AC19;
   }
+
+  .jsDropdownIcon {
+    float: right;
+    transition: transform 0.1s ease;
+  }
+
+  .jsDropdownButton.open .jsDropdownIcon {
+    transform: rotate(180deg);
+  }

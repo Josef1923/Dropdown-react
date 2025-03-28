@@ -7,7 +7,7 @@ import "./Dropdown.css";
  * @param {Function} onChange - Fonction appelée quand une option est sélectionnée, elle prend en paramètre la value de l'option sélectionnée * 
  */
 
-function Dropdown({ options, onChange, disabled = false}) {
+function Dropdown({ options, onChange, icon, disabled = false}) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(options[0] || null);
@@ -39,6 +39,7 @@ function Dropdown({ options, onChange, disabled = false}) {
                 onClick={Toggle}
                 disabled={disabled}>
                     {selectedOption.label || "Sélectionner une option"}
+                    {icon && <span className="jsDropdownIcon">{icon}</span>}
                 </button>
                 {isOpen && (
                     <ul className="jsDropdownList">

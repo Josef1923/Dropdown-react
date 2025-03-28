@@ -1,4 +1,5 @@
 import Dropdown from "./Dropdown";
+import icon from "../src/asset/icon.svg"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           { label: "Legal", value: "legal" }
         ]}
         onChange={(value) => console.log("Valeur sélectionnée :", value)}
+        icon={<img src={icon} alt="icon" />}
       />
     </div>
   )

@@ -49,6 +49,12 @@ onChange={(value) =>  console.log("Valeur sélectionnée :", value)}
   - disbled (si vous passez true, le dropdown sera desactivé)
   <Dropdown options={options} disabled={true} />
 
+  - Vous pouvez ajouter une icône à droite du bouton avec la props `icon`.
+  import Icon from "./icon.svg";
+  <Dropdown
+  icon={<img src={Chevron} alt="chevron" />}
+  />
+
 
 ### CSS ###
 
