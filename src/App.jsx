@@ -8,11 +8,13 @@ function App() {
       <label htmlFor='department'>Department</label>
       <Dropdown
         options={[
-          { label: "Pomme", value: "apple" },
-          { label: "Banane", value: "banana" },
-          { label: "Poire", value: "pear" },
+          { label: "Sales", value: "sales" },
+          { label: "Marketing", value: "marketing" },
+          { label: "Engineering", value: "engineering" },
+          { label: "Human Resources", value: "hr" },
+          { label: "Legal", value: "legal" }
         ]}
-        onChange={(val) => console.log("Valeur sélectionnée :", val)}
+        onChange={(value) => console.log("Valeur sélectionnée :", value)}
       />
     </div>
   )

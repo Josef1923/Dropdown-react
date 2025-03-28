@@ -7,12 +7,16 @@ import "./Dropdown.css";
  * @param {Function} onChange - Fonction appelée quand une option est sélectionnée, elle prend en paramètre la value de l'option sélectionnée * 
  */
 
-function Dropdown({ options, onChange }) {
+function Dropdown({ options, onChange, disabled = false}) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(options[0] || null);
 
     const Toggle = () => {
+        //Si le dropdown est désactivé, on ne fait rien
+        if (disabled) {
+            return;
+        }
         setIsOpen(!isOpen);
     }
 
@@ -31,7 +35,9 @@ function Dropdown({ options, onChange }) {
     return (
         <div className="jsWrapper">
             <div className="jsDropdown">
-                <button className={`jsDropdownButton ${isOpen ? "open" : ""}`} onClick={Toggle}>
+                <button className={`jsDropdownButton ${isOpen ? "open" : ""}`} 
+                onClick={Toggle}
+                disabled={disabled}>
                     {selectedOption.label || "Sélectionner une option"}
                 </button>
                 {isOpen && (

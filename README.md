@@ -44,6 +44,11 @@ options={option}
 onChange={(value) =>  console.log("Valeur sélectionnée :", value)}
 />
 
+4. Options
+
+  - disbled (si vous passez true, le dropdown sera desactivé)
+  <Dropdown options={options} disabled={true} />
+
 
 ### CSS ###
 
