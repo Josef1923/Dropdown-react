@@ -29,19 +29,21 @@ function Dropdown({ options, onChange }) {
     }
 
     return (
-        <div className="dropdown">
-            <button className={`dropdownButton ${isOpen ? "open" : ""}`} onClick={Toggle}>
-                {selectedOption.label || "Sélectionner une option"}
-            </button>
-            {isOpen && (
-                <ul className="dropdownList">
-                    {options.map((option, index) => (
-                        <li key={index} onClick={() => onSelect(option)}>
-                            {option.label}
-                        </li>
-                    ))}
-                </ul>
-            )}
+        <div className="jsWrapper">
+            <div className="jsDropdown">
+                <button className={`jsDropdownButton ${isOpen ? "open" : ""}`} onClick={Toggle}>
+                    {selectedOption.label || "Sélectionner une option"}
+                </button>
+                {isOpen && (
+                    <ul className="jsDropdownList">
+                        {options.map((option, index) => (
+                            <li key={index} onClick={() => onSelect(option)}>
+                                {option.label}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
         </div>
     );
 }

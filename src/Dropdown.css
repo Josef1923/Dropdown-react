@@ -1,26 +1,29 @@
-* {
+.jsWrapper * {
   box-sizing: border-box;
 }
 
-.dropdown {
+.jsDropdown {
     position: relative;
     display: inline-block;
+    width: 200px;
   }
   
-  .dropdownButton {
-    padding: 10px 15px;
+  .jsDropdownButton {
+    padding: 10px;
     background: #f0f0f0;;
     border: 1px solid #f0f0f0;;
     cursor: pointer;
     border-radius: 5px;
+    width: 100%;
+    text-align: left;
   }
 
-  .dropdownButton.open {
+  .jsDropdownButton.open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
   
-  .dropdownList {
+  .jsDropdownList {
     margin-top: 0px;
     padding: 0;
     list-style: none;
@@ -33,11 +36,11 @@
     width: 100%;  
   }
   
-  .dropdownList li {
+  .jsDropdownList li {
     padding: 10px 15px;
     cursor: pointer;
   }
   
-  .dropdownList li:hover {
+  .jsDropdownList li:hover {
     background: #93AC19;
   }

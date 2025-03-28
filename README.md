@@ -5,20 +5,22 @@ Il permet aux utilisateurs de sélectionner une option parmi une liste
 
 ### Installation ###
 
-1. Récupérer le composant
+Dans votre terminal:
 
-Téléchargez ou clonez ce dépôt, puis placez les fichiers "Dropdown.jsx et  Dropdown.css" dans votre projet React dans le dossier des components.
-
-2. Importer le composant dans votre projet
-
-Dans le fichier où vous voulez l'utilsier :
-
-import Dropdown from "chemin de l'emplacment du fichier.jsx"
-import "chemin de l'emplacement du fichier.css"
+bash
+npm install josef1923-dropdown-react
 
 ### Utilisation ###
 
-Le composant prend en parametre une lsite d'options à afficher sous la forme d'un tableau.
+Dans le fichier ou vous souhaitez utiliser le composant:
+
+import Dropdown from "josef1923-dropdown-react";
+import "josef1923-dropdown-react/src/Dropdown.css";
+
+
+### Exemple ###
+
+Le composant prend en parametre une liste d'options à afficher sous la forme d'un tableau.
 
 const State = [
   { label: "New York", value: "new-york" },

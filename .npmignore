@@ -1,0 +1,14 @@
+node_modules
+vite.config.js
+App.jsx
+main.jsx
+index.html
+.eslintrc.js
+eslint.config.js
+*.test.js
+*.log
+coverage
+dist
+demo
+.env
+.DS_Store

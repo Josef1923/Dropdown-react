@@ -1,7 +1,10 @@
 {
-  "name": "dropdown-react",
-  "private": true,
-  "version": "0.0.0",
+  "name": "josef1923-dropdown-react",
+  "version": "0.0.2",
+  "description": "Composant Dropdown réutilisable en React",
+  "main": "index.js",
+  "author": "Josef",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
