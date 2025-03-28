@@ -22,13 +22,27 @@ import "josef1923-dropdown-react/src/Dropdown.css";
 
 Le composant prend en parametre une liste d'options à afficher sous la forme d'un tableau.
 
-const State = [
-  { label: "New York", value: "new-york" },
-  { label: "Los Angeles", value: "los-angeles" },
-  { label: "Chicago", value: "chicago" }
+1. Exemple de données :
+
+const state = [
+  { name: "New York", abbreviation: "NY" },
+  { name: "Los Angeles", abbreviation: "LA" },
+  { name: "Chicago", abbreviation: "CH" }
 ]
 
-<Dropdown options={options} onChange={(val) => console.log(val)} />
+2. Adaptation :
+
+const options = states.map((state) => ({
+  label: state.name               // Ce qui sera affiché dans le menu déroulant
+  value: state.abbreviation       // Ce qui sera renvoyé lors de la sélection
+}));
+
+3. Composant 
+
+<Dropdown 
+options={option} 
+onChange={(value) =>  console.log("Valeur sélectionnée :", value)}
+/>
 
 
 ### CSS ###
