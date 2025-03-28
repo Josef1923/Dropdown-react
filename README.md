@@ -29,3 +29,14 @@ const State = [
 ]
 
 <Dropdown options={options} onChange={(val) => console.log(val)} />
+
+
+### CSS ###
+
+Conteneur global : jsWrapper
+Conteneur dropdown : jsDropdown
+Bouton de selection : jsDropdownButton
+Bouton ouvert : jsDropDownButton .open
+Liste : jsDropdownList
+Eléments de la liste : jsDropdownList li
+Hover : jsDropdownList li:hover
