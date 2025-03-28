@@ -34,6 +34,9 @@
     background: white;
     position: absolute;
     width: 100%;  
+    z-index: 1;
+    max-height: 250px;
+    overflow: auto;
   }
   
   .jsDropdownList li {
