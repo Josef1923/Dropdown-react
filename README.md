@@ -52,7 +52,7 @@ onChange={(value) =>  console.log("Valeur sélectionnée :", value)}
   - Vous pouvez ajouter une icône à droite du bouton avec la props `icon`.
   import Icon from "./icon.svg";
   <Dropdown
-  icon={<img src={Chevron} alt="chevron" />}
+  icon={<img src={icon} alt="icon" />}
   />
 
 
