@@ -1,6 +1,6 @@
 {
   "name": "josef1923-dropdown-react",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Composant Dropdown réutilisable en React",
   "main": "index.js",
   "files": [

@@ -44,8 +44,10 @@
     cursor: pointer;
   }
   
-  .jsDropdownList li:hover {
+  .jsDropdownList li:hover,
+  .jsDropdownList li.focused {
     background: #93AC19;
+    outline: none;
   }
 
   .jsDropdownIcon {
@@ -55,4 +57,4 @@
 
   .jsDropdownButton.open .jsDropdownIcon {
     transform: rotate(180deg);
-  }
+  } 
