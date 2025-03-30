@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./Dropdown.css";
 
 function Dropdown({ options, onChange, icon, disabled = false }) {
@@ -8,6 +8,9 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
 
     // const en vu de selcetionner l'option focusée par le clavier
     const [focusedList, setFocusedList] = useState(); // pour savoir quelle option est focusée par le clavier(option keyboard)
+
+    // const pour avoir une référence sur chaque élément de la liste
+    const liRefs = useRef([]);
 
     // Fonction pour gérer le clic sur le bouton du menu déroulant
     const Toggle = () => {
@@ -29,12 +32,24 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
         if (disabled) return;
 
         if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+            e.preventDefault(); 
             //Si prev n'est pas le dernier élément de la liste, on l'incrémente de 1 sinon on le met à la dernière option de la liste
-            setFocusedList(prev => (prev < options.length - 1 ? prev + 1 : options.length - 1));  
+            setFocusedList(prev => {
+                const next = prev < options.length - 1 ? prev + 1 : options.length - 1;
+                // Prends la référence du prochain élément (next) dans mon tableau de refs (liRefs.current) 
+                // et fais en sorte qu’il devienne visible automatiquement en scrollant juste ce qu'il faut
+                liRefs.current[next]?.scrollIntoView({ block: "nearest" });
+                return next;
+            });
         }
             // Si prev n'est pas le premier élément de la liste, on le décrémente de 1 sinon on le met à 0
         if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
-            setFocusedList(prev => (prev > 0 ? prev - 1 : 0));
+            e.preventDefault();
+            setFocusedList(prev => {
+                const next = prev > 0 ? prev - 1 : 0;
+                liRefs.current[next]?.scrollIntoView({ block: "nearest" });
+                return next;
+            });
         }
 
         if (e.key === "Enter" || e.key === " ") {         
@@ -71,6 +86,7 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
                         {options.map((option, index) => (
                             <li
                                 key={index}
+                                ref={(el) => (liRefs.current[index] = el)} // on ajoute une référence à chaque élément de la liste
                                 onClick={() => onSelect(option)}                               
                                 className={index === focusedList ? "focused" : ""}                                
                             >
