@@ -13,13 +13,9 @@ npm install josef1923-dropdown-react
 
 ### Utilisation ###
 
-Utilisation du component:
-
 import Dropdown from "josef1923-dropdown-react";
 
-
 import "josef1923-dropdown-react/src/Dropdown.css";
-
 
 ### Exemple ###
 
