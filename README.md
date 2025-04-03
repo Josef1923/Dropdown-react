@@ -7,14 +7,17 @@ Il permet aux utilisateurs de sélectionner une option parmi une liste
 
 Dans votre terminal:
 
-bash
+```bash
 npm install josef1923-dropdown-react
+```
 
 ### Utilisation ###
 
-Dans le fichier ou vous souhaitez utiliser le composant:
+Utilisation du component:
 
 import Dropdown from "josef1923-dropdown-react";
+
+
 import "josef1923-dropdown-react/src/Dropdown.css";
 
 
@@ -23,45 +26,63 @@ import "josef1923-dropdown-react/src/Dropdown.css";
 Le composant prend en parametre une liste d'options à afficher sous la forme d'un tableau.
 
 1. Exemple de données :
-
+```js
 const state = [
-  { name: "New York", abbreviation: "NY" },
-  { name: "Los Angeles", abbreviation: "LA" },
-  { name: "Chicago", abbreviation: "CH" }
+  { label: "New York", value: "NY" },
+  { label: "Los Angeles", value: "LA" },
+  { label: "Chicago", value: "CH" }
 ]
+```
 
-2. Adaptation :
+2. Composant 
 
-const options = states.map((state) => ({
-  label: state.name               // Ce qui sera affiché dans le menu déroulant
-  value: state.abbreviation       // Ce qui sera renvoyé lors de la sélection
-}));
-
-3. Composant 
-
+```jsx
 <Dropdown 
 options={option} 
 onChange={(value) =>  console.log("Valeur sélectionnée :", value)}
 />
+```
 
-4. Options
+3. Options
 
-  - disbled (si vous passez true, le dropdown sera desactivé)
-  <Dropdown options={options} disabled={true} />
+| Prop       | Type         | Description                                      |
+|------------|--------------|--------------------------------------------------|
+| `options`  | `array`      | Liste des options à afficher                     |
+| `onChange` | `function`   | Callback quand une valeur est sélectionnée       |
+| `disabled` | `boolean`    | Si `true`, le dropdown est désactivé             |
+| `icon`     | `JSX.Element`| Icône personnalisée affichée à droite du bouton  |
 
-  - Vous pouvez ajouter une icône à droite du bouton avec la props `icon`.
-  import icon from "./assets/icon.svg";
-<Dropdown
-  icon={<img src={icon} alt="Chevron icon" />}
+Exemple:
+
+```jsx
+import icon from "./assets/icon.svg";
+
+<Dropdown 
+  options={options} 
+  disabled={true} 
+  icon={<img src={icon}/>}
 />
+```
 
 
 ### CSS ###
 
 Conteneur global : jsWrapper
+
+
 Conteneur dropdown : jsDropdown
+
+
 Bouton de selection : jsDropdownButton
+
+
 Bouton ouvert : jsDropDownButton .open
+
+
 Liste : jsDropdownList
+
+
 Eléments de la liste : jsDropdownList li
+
+
 Hover : jsDropdownList li:hover
