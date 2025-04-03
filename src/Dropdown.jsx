@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Dropdown.css";
 
 function Dropdown({ options, onChange, icon, disabled = false }) {
@@ -68,7 +68,22 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
         }
     };
 
+    useEffect(() => {
+        const outClickCloser = (e) => {
+            if (isOpen && !e.target.closest(".jsDropdown")) {
+                setIsOpen(false);
+            }
+        };
+    
+        document.addEventListener("mousedown", outClickCloser);
+    
+        return () => {
+            document.removeEventListener("mousedown", outClickCloser);
+        };
+    }, [isOpen]);
+
     return (
+      
         <div className="jsWrapper">
             <div className="jsDropdown"
                 onKeyDown={handleKeyDown}
