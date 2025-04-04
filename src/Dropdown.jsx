@@ -23,14 +23,41 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
         setSelectedOption(option);
         setIsOpen(false);
         if (onChange) { //on vérifie jsute au cas où onChange n'est pas défini pour éviter les erreurs
-            onChange(option.value);
-        }
+                onChange(option.value);
+            }
 
     };
 
     const handleKeyDown = (e) => {
         if (disabled) return;
 
+        if (!isOpen) {
+            // Si le menu n'est pas ouvert, on gère les touches fléchées pour changer l'option sélectionnée
+            // on recupère l'index de l'option sélectionnée dans le tableau d'options
+            const currentIndex = options.findIndex(option => option === selectedOption);
+        
+            if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+                e.preventDefault();
+                if (currentIndex < options.length - 1) {
+                    const next = currentIndex + 1;
+                    setSelectedOption(options[next]);
+                    onChange?.(options[next].value);
+                }  
+                return;
+            }
+        
+            if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+                e.preventDefault();
+                if (currentIndex > 0) {
+                    const prev = currentIndex - 1;
+                    setSelectedOption(options[prev]);
+                    onChange?.(options[prev].value);
+                }
+                return;
+            }
+        }
+
+        if (isOpen) {
         if (e.key === "ArrowDown" || e.key === "ArrowRight") {
             e.preventDefault(); 
             //Si prev n'est pas le dernier élément de la liste, on l'incrémente de 1 sinon on le met à la dernière option de la liste
@@ -66,7 +93,8 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
         if (e.key === "Escape") {
             setIsOpen(false);
         }
-    };
+    }
+};
 
     useEffect(() => {
         const outClickCloser = (e) => {
@@ -83,11 +111,10 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
     }, [isOpen]);
 
     return (
-      
+        
         <div className="jsWrapper">
             <div className="jsDropdown"
-                onKeyDown={handleKeyDown}
-                tabIndex={0} // pour ne pas perdre le focus du menu déroulant
+                onKeyDown={handleKeyDown}                
             >
                 <button className={`jsDropdownButton ${isOpen ? "open" : ""}`}
                     onClick={Toggle}
