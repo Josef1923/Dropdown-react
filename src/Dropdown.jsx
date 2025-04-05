@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
+import defaultIcon from "../src/asset/icon.svg"
 import "./Dropdown.css";
 
-function Dropdown({ options, onChange, icon, disabled = false }) {
+function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
 
     const [isOpen, setIsOpen] = useState(false); // pour savoir si le menu est ouvert ou non
     const [selectedOption, setSelectedOption] = useState(options[0] || null); // pour mettre à jour l'option sélectionnée dns la liste
@@ -13,7 +14,7 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
     const liRefs = useRef([]);
 
     // Fonction pour gérer le clic sur le bouton du menu déroulant
-    const Toggle = () => {
+    const toggle = () => {
         if (disabled) return;
 
         if (!isOpen) {
@@ -38,7 +39,7 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
 
         if ((e.key === "ArrowDown" || e.key === "ArrowUp") && e.altKey) {
             e.preventDefault();
-            Toggle();
+            toggle();
             if (!isOpen) {
                 setFocusedList(0);
             }
@@ -161,11 +162,11 @@ function Dropdown({ options, onChange, icon, disabled = false }) {
                 onKeyDown={handleKeyDown}
             >
                 <button className={`jsDropdownButton ${isOpen ? "open" : ""}`}
-                    onClick={Toggle}
+                    onClick={toggle}
                     disabled={disabled} //pour garder l'option de la version jquery
                 >
                     {selectedOption.label || "Sélectionner une option"}
-                    {icon && <span className="jsDropdownIcon">{icon}</span>}
+                    {icon && <span className="jsDropdownIcon"><img src = {icon} /></span>}
                 </button>
                 {isOpen && (
                     <ul className="jsDropdownList">
