@@ -12,6 +12,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
 
     // const pour avoir une référence sur chaque élément de la liste
     const liRefs = useRef([]);
+    const dropdownRef = useRef(null);
 
     // Fonction pour gérer le clic sur le bouton du menu déroulant
     const toggle = () => {
@@ -126,7 +127,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
                 e.preventDefault();
                 setFocusedList(0);
             }
-            
+
             if (e.key === "End" || e.key === "PageDown") {
                 e.preventDefault();
                 setFocusedList(options.length - 1);
@@ -136,7 +137,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
 
     useEffect(() => {
         const outClickCloser = (e) => {
-            if (isOpen && !e.target.closest(".jsDropdown")) {
+            if (isOpen && dropdownRef.current && !dropdownRef.current.contains(e.target)) {
                 setIsOpen(false);
             }
         };
@@ -150,7 +151,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
 
     // useEffect pour gérer le focus sur l'élément de la liste à l'ouverture du menu
     useEffect(() => {
-            if (isOpen && typeof focusedList === "number") {
+        if (isOpen && typeof focusedList === "number") {
             liRefs.current[focusedList]?.scrollIntoView({ block: "nearest" });
         }
     }, [isOpen, focusedList]);
@@ -159,6 +160,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
 
         <div className="jsWrapper">
             <div className="jsDropdown"
+                ref={dropdownRef}
                 onKeyDown={handleKeyDown}
             >
                 <button className={`jsDropdownButton ${isOpen ? "open" : ""}`}
@@ -166,7 +168,15 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
                     disabled={disabled} //pour garder l'option de la version jquery
                 >
                     {selectedOption.label || "Sélectionner une option"}
-                    {icon && <span className="jsDropdownIcon"><img src = {icon} /></span>}
+                    {icon && (
+                        <span className="jsDropdownIcon">
+                            {typeof icon === "string" ? (
+                                <img src={icon} alt="dropdown icon" />
+                            ) : (
+                                icon
+                            )}
+                        </span>
+                    )}
                 </button>
                 {isOpen && (
                     <ul className="jsDropdownList">
