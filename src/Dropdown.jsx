@@ -19,7 +19,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
         if (disabled) return;
 
         if (!isOpen) {
-            const index = options.findIndex(option => option === selectedOption);
+            const index = options.findIndex(option => option.value === selectedOption?.value);
             setFocusedList(index);
         }
         setIsOpen(!isOpen);
@@ -50,7 +50,6 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
 
         if (!isOpen) {
             // Si le menu n'est pas ouvert, on gère les touches fléchées pour changer l'option sélectionnée
-            // on recupère l'index de l'option sélectionnée dans le tableau d'options
             const currentIndex = options.findIndex(option => option === selectedOption);
 
             if (e.key === "ArrowDown" || e.key === "ArrowRight") {
@@ -111,7 +110,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
                 e.preventDefault()
                 if (!isOpen) { // déclenche si le menu est fermé
                     setIsOpen(true); // ouvre le menu
-                    const index = options.findIndex(option => option === selectedOption);
+                    const index = options.findIndex(option => option.value === selectedOption?.value);
                     setFocusedList(index); // focus l'option sélectionnée 
                 }
                 else if (focusedList >= 0) {
