@@ -170,7 +170,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
                     {icon && (
                         <span className="jsDropdownIcon">
                             {typeof icon === "string" ? (
-                                <img src={icon} alt="dropdown icon" />
+                                <img src={icon} />
                             ) : (
                                 icon
                             )}
@@ -186,6 +186,9 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
                                 onClick={() => onSelect(option)}
                                 className={index === focusedList ? "focused" : ""}
                             >
+                                {option.customIcon && (
+                                    <span className="jsCustomIcon">{option.customIcon}</span>
+                                )}
                                 {option.label}
                             </li>
                         ))}

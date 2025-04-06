@@ -72,10 +72,10 @@ function App() {
       <Dropdown
         options={[
           { label: "Sales", value: "sales" },
-          { label: "Marketing", value: "marketing" },
-          { label: "Engineering", value: "engineering" },
+          { customIcon:"🤪", label: "Marketing", value: "marketing" },
+          { customIcon:"😸",label: "Engineering", value: "engineering" },
           { label: "Human Resources", value: "hr" },
-          { label: "Legal", value: "legal" }
+          { customeIcon:"👽", label: "Legal", value: "legal" }
         ]}
         onChange={(value) => console.log("Département sélectionné :", value)}
       />

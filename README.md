@@ -24,9 +24,9 @@ Le composant prend en parametre une liste d'options à afficher sous la forme d'
 1. Exemple de données :
 ```js
 const state = [
-  { label: "New York", value: "NY" },
-  { label: "Los Angeles", value: "LA" },
-  { label: "Chicago", value: "CH" }
+  { customIcon:"👽",label: "New York", value: "NY" },
+  { customIcon:"🛸",label: "Los Angeles", value: "LA" },
+  { customIcon:"👾",label: "Chicago", value: "CH" }
 ]
 ```
 
@@ -41,13 +41,13 @@ onChange={(value) =>  console.log("Valeur sélectionnée :", value)}
 
 3. Options
 
-| Prop       | Type         | Description                                      |
-|------------|--------------|--------------------------------------------------|
-| `options`  | `array`      | Liste des options à afficher                     |
-| `onChange` | `function`   | Callback quand une valeur est sélectionnée       |
-| `disabled` | `boolean`    | Si `true`, le dropdown est désactivé             |
-| `icon`     | `JSX.Element`| Icône personnalisée affichée à droite du bouton  |
-
+| Prop        | Type         | Description                                           |
+|-------------|--------------|-------------------------------------------------------|
+| `options`   | `array`      | Liste des options à afficher                          |
+| `onChange`  | `function`   | Callback quand une valeur est sélectionnée            |
+| `disabled`  | `boolean`    | Si `true`, le dropdown est désactivé                  |
+| `icon`      | `JSX.Element`| Icône personnalisée affichée à droite du bouton       |
+| `customIcon`| `string`     | Icone personnalisée affichée à gauche de chaque option|
 Exemple:
 
 ```jsx
