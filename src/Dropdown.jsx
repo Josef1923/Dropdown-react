@@ -19,6 +19,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
         if (disabled) return;
 
         if (!isOpen) {
+            // on recherche l'index de l'option sélectionnée afin de le focusé lors de l'ouverture du menu
             const index = options.findIndex(option => option.value === selectedOption?.value);
             setFocusedList(index);
         }
@@ -41,11 +42,7 @@ function Dropdown({ options, onChange, icon = defaultIcon, disabled = false }) {
         if ((e.key === "ArrowDown" || e.key === "ArrowUp") && e.altKey) {
             e.preventDefault();
             toggle();
-            if (!isOpen) {
-                setFocusedList(0);
-            }
             return;
-
         }
 
         if (!isOpen) {
